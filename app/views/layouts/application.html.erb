@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <header>
+      <% if user_signed_in? %>
+      <li>
+        <%= link_to "商品一覧", items_path %>
+      </li>
+      <% else %>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
