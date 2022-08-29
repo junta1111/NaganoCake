@@ -1,0 +1,30 @@
+<h2>ショッピングカート</h2>
+ <thead>
+   <tr>
+     <th>商品名</th>
+     <th>単価(税込)</th>
+     <th>数量</th>
+     <th>小計</th>
+   </tr>
+ </thead>
+ 
+ <tbody>
+   <% @cart_items.each do |cart_item| %>
+   <tr>
+     <td>
+       <%= cart_item.name %>
+     </td>
+     <td>
+       <%= cart_item.price %>
+     </td>
+     <td>
+      <%= form_with model: @cart_items, url: new_order_path do |f| %>
+      <%= f.hidden_field :item_id, :value => @cart_items %>
+      <%= f.select :amount, *[1..10] %>
+      <% end %>
+     </td>
+     <td>
+     </td>
+   </tr>
+   <% end %>
+ </tbody>

@@ -1,6 +1,6 @@
-<h2>商品新規登録</h2>
+<h2>商品編集</h2>
 
-<%= form_with model: @item, url: create_item_path, method: :post do |f| %>
+<%= form_with model: @item, url: update_item_path, method: :patch do |f| %>
 
 <label for="inputImage">商品画像</label>
   <%= f.file_field :item_image, placeholder: "商品画像", accept: "image/*" %>
@@ -19,7 +19,7 @@
 </div>
 
 <h4>税抜価格</h4>
-<%= f.text_field :price %>円
+<%= f.text_field :price %>
 
 <div class="is_active">
   <%= f.label :販売ステータス %>
@@ -33,5 +33,5 @@
   </div>
 </div>
 
-<%= f.submit '新規登録' %>
+<%= f.submit '変更を保存' %>
 <% end %>

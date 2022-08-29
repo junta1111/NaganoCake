@@ -4,20 +4,31 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+get '/' => 'public/homes#top'
+get '/about' => 'public/homes#about'
+
+scope module: :public do
+resources :customers
+resources :items
+resources :cart_items
+resources :orders
+end
+
+post 'orders/confirm' => 'public/orders#confirm'
 
 # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-get 'genres' => 'admin/genres#index'
-get 'genres/:id/edit' => 'admin/genres#edit', as: 'edit_genre'
-patch 'genres/:id' => 'admin/genres#update', as: 'update_genre'
-post 'admin/genres' => 'admin/genres#create', as: 'create_genre'
 
-get 'items' => 'admin/items#index'
-get 'items/new'
-get 'admin/items/new' => 'admin/items#new'
-post 'admin/items' => 'admin/items#create', as: 'create_item'
+namespace :admin do
+  resources :genres
+  resources :items
+  resources :customers
+  resources :orders
+end
+
+get 'admin/' => 'admin/homes#top'
 
 end

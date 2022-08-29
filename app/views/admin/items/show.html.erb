@@ -1,0 +1,18 @@
+<h2>商品詳細</h2>
+
+<h4>商品名</h4>
+<%= @item.name %>
+
+<h4>商品説明</h4>
+<%= @item.introduction %>
+
+<h4>ジャンル</h4>
+<%= @item.genre_id %>
+
+<h4>税込価格（税抜価格）</h4>
+<%= @item.price %>円
+
+<h4>販売ステータス</h4>
+<%= @item.is_active %>
+
+<%= link_to "編集する", edit_item_path(@item.id) %>
