@@ -4,14 +4,18 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-get '/' => 'public/homes#top'
+root to: 'public/homes#top'
 get '/about' => 'public/homes#about'
+
+get 'customers/unsubscribe' => 'public/customers#unsubscribe'
+patch 'customers/withdraw' => 'public/customers#withdraw'
 
 scope module: :public do
 resources :customers
 resources :items
 resources :cart_items
 resources :orders
+resources :address
 end
 
 post 'orders/confirm' => 'public/orders#confirm'

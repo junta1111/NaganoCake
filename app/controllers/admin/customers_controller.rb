@@ -4,17 +4,17 @@ class Admin::CustomersController < ApplicationController
   end
   
   def show
-    @customers = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
   
   def edit
-    @customers = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
   
   def update
-    @customer = Customer.find(params[:id])
+    customer = Customer.find(params[:id])
     customer.update(customer_params)
-    redirect_to show_customer_path(customer.id)
+    redirect_to admin_customer_path(customer.id)
   end
   
   private

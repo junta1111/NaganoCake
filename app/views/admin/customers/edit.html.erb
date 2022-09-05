@@ -1,23 +1,23 @@
-<h2><%= @customers.full_name %>さんの会員情報編集</h2>
+<h2><%= @customer.full_name %>さんの会員情報編集</h2>
 
-<%= form_with model: @customer, url: update_customer_path(@customer.id), method: :patch do |f| %>
+<%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
 
 <h4>会員ID</h4>
-<%= @customers.id %>
+<%= @customer.id %>
 
 <h4>氏名</h4>
 <%= f.text_field :last_name %>
 <%= f.text_field :first_name %>
 
 <h4>フリガナ</h4>
-<%= f.text_field :iast_name_kana %>
+<%= f.text_field :last_name_kana %>
 <%= f.text_field :first_name_kana %>
 
 <h4>郵便番号</h4>
-<%= f.text.field :postal_code %>
+<%= f.text_field :postal_code %>
 
 <h4>住所</h4>
-<%= f.text.field :address %>
+<%= f.text_field :address %>
 
 <h4>電話番号</h4>
 <%= f.text_field :telephone_number %>
@@ -26,12 +26,18 @@
 <%= f.text_field :email %>
 
 <h4>会員ステータス</h4>
-<%= f.radio_button :is_deleted, "true" %>
-<%= f.rabel :is_deleted, "有効" %>
-
-<%= f.radio_button :is_deleted, "false" %>
-<%= f.rabel :is_deleted, "退会" %>
-
-<%= link_to "変更を保存", show_customer_path(@customer.id) %>
+<div class="is_deleted">
+  <% f.label :会員ステータス %>
+  <div>
+    <%= f.radio_button :is_deleted, true %>
+    <%= f.label :is_deleted, "有効", valie: true %>
+  </div>
+  <div>
+    <%= f.radio_button :is_deleted, false %>
+    <%= f.label :is_deleted, "退会", value: false %>
+  </div>
+</div>
+ 
+ <%= f.submit "変更を保存" %>
 
 <% end %>

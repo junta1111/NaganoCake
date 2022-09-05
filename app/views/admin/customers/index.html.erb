@@ -9,19 +9,23 @@
  </thead>
  
  <tbody>
-  <%= @customers.each do |customer| %>
+  <% @customers.each do |customer| %>
   <tr>
     <td>
-      <%= id %>
+      <%= customer.id %>
     </td>
     <td>
-      <%= customer.full_name %>
+      <%= link_to customer.full_name, admin_customer_path(customer.id) %>
     </td>
     <td>
       <%= customer.email %>
     </td>
     <td>
-      <%= customer.is_deleted %>
+      <% if customer.is_deleted == false %>
+      <%= "退会" %>
+      <% else %>
+      <%= "有効" %>
+      <% end %>
     </td>
   </tr>
   <% end %>
