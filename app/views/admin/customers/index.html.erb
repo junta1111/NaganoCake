@@ -9,7 +9,7 @@
      <th>ステータス</th>
    </tr>
  </thead>
- 
+
  <tbody>
   <% @customers.each do |customer| %>
   <tr>
@@ -24,15 +24,15 @@
     </td>
     <td>
       <% if customer.is_deleted == false %>
-      <%= "退会" %>
-      <% else %>
       <%= "有効" %>
+      <% else %>
+      <%= "退会" %>
       <% end %>
     </td>
   </tr>
   <% end %>
  </tbody>
  <%= paginate @customers %>
- 
+
  </table>
 

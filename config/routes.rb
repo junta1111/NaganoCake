@@ -11,7 +11,7 @@ get 'customers/unsubscribe' => 'public/customers#unsubscribe'
 patch 'customers/withdraw' => 'public/customers#withdraw'
 
 scope module: :public do
-resources :customers
+resource :customers
 resources :items
 resources :cart_items
 resources :orders

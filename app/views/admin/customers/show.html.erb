@@ -23,9 +23,9 @@
 
 <h4>会員ステータス</h4>
 <% if @customer.is_deleted == false %>
-<%= "退会" %>
-<% else %>
 <%= "有効" %>
+<% else %>
+<%= "退会" %>
 <% end %>
 
 <%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
