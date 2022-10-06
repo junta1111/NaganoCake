@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   # URL /customers/sign_in ...
+
+scope module: :public do
+resource :customers
+resources :items
+resources :cart_items
+resources :orders
+resources :address
+end
+
  devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -9,14 +18,6 @@ get '/about' => 'public/homes#about'
 
 get 'customers/unsubscribe' => 'public/customers#unsubscribe'
 patch 'customers/withdraw' => 'public/customers#withdraw'
-
-scope module: :public do
-resource :customers
-resources :items
-resources :cart_items
-resources :orders
-resources :address
-end
 
 post 'orders/confirm' => 'public/orders#confirm'
 
