@@ -8,7 +8,7 @@
     (姓)<%= f.text_field :last_name %>
     (名)<%= f.text_field :first_name %>
   </div>
-  
+
   <div class="field">
     <%= f.label :"フリガナ" %>
     (セイ)<%= f.text_field :last_name_kana %>
@@ -19,17 +19,17 @@
     <%= f.label :"メールアドレス" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-  
+
   <div class="field">
     <%= f.label :"郵便番号(ハイフンなし)" %>
     <%= f.text_field :postal_code %>
   </div>
-  
+
   <div class="field">
     <%= f.label :"住所" %>
     <%= f.text_field :address %>
   </div>
-  
+
   <div class="field">
     <%= f.label :"電話番号(ハイフンなし)" %>
     <%= f.text_field :telephone_number %>
@@ -49,7 +49,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit '新規登録' %>
+    <%= f.submit '新規登録', class: "btn btn-primary" %>
   </div>
 <% end %>
 

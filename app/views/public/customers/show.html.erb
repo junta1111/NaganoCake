@@ -1,18 +1,44 @@
 <h2>マイページ</h2>
 
 <h2>登録情報</h2>
-<%= link_to '編集する', edit_customers_path %>
+<%= link_to '編集する', edit_customers_path, class: "btn btn-success" %>
 
-<h4>氏名</h4>
-<%= @customer.full_name %>
-<%= @customer.full_name_kana %>
-<%= @customer.postal_code %>
-<%= @customer.address %>
-<%= @customer.telephone_number %>
-<%= @customer.email %>
+<thead>
+  <tr>
+    <th>氏名</th>
+    <th>カナ</th>
+    <th>郵便番号</th>
+    <th>住所</th>
+    <th>電話番号</th>
+    <th>メールアドレス</th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td>
+      <%= @customer.full_name %>
+    </td>
+    <td>
+      <%= @customer.full_name_kana %>
+    </td>
+    <td>
+      <%= @customer.postal_code %>
+    </td>
+    <td>
+      <%= @customer.address %>
+    </td>
+    <td>
+      <%= @customer.telephone_number %>
+    </td>
+    <td>
+      <%= @customer.email %>
+    </td>
+  </tr>
+</tbody>
 
 <h4>配送先</h4>
-<%= link_to '一覧を見る', address_index_path %>
+<%= link_to '一覧を見る', addresses_path, class: "btn btn-primary" %>
 
 <h4>注文履歴</h4>
-<%= link_to '一覧を見る', orders_path %>
+<%= link_to '一覧を見る', orders_path, class: "btn btn-primary" %>

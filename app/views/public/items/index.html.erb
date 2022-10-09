@@ -1,5 +1,21 @@
 <h2>商品一覧</h2>
 
-<% @items.each do |item| %>
+<tbody>
+  <% @items.each do |item| %>
+  <tr>
+    <td>
+      <%= link_to item_path(item.id) do %>
+      <%= image_tag item.get_image %>
+      <% end %>
+    </td>
+    <td>
+      <%= item.name %>
+    </td>
+    <td>
+      ￥<%= item.add_tax_sales_price.to_s(:dalimited) %>
+    </td>
+  </tr>
+</tbody>
+
 
 <% end %>

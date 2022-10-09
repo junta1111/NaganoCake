@@ -6,7 +6,7 @@ resource :customers
 resources :items
 resources :cart_items
 resources :orders
-resources :address
+resources :addresses
 end
 
  devise_for :customers,skip: [:passwords], controllers: {
