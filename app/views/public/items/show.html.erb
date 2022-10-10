@@ -1,12 +1,14 @@
-<%= @items.name %>
+<tbody>
+  <%= image_tag @items.get_image %>
+  <%= @items.name %>
+  <%= @items.introduction %>
+  ￥<%= @items.add_tax_sales_price.to_s(:dalimited) %>(税込)
 
-<%= @items.introduction %>
+  <%= form_with model: @cart_item, url: cart_items_path do |f| %>
 
-<%= @items.price %>
+  <%= f.hidden_field :item_id, :value => @items.id %>
+  <%= f.select :amount, *[1..10] %>
+  <%= f.submit 'カートに入れる', class: "btn btn-success" %>
 
-<%= form_with model: @cart_item, url: cart_items_path do |f| %>
-
-<%= f.hidden_field :item_id, :value => @items.id %>
-<%= f.select :amount, *[1..10] %>
-
-<% end %>
+  <% end %>
+</tbody>
