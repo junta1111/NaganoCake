@@ -6,6 +6,7 @@ resource :customers
 resources :items
 delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 resources :cart_items
+get 'orders/complete' => 'orders#complete'
 resources :orders
 resources :addresses
 end
