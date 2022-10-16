@@ -59,3 +59,21 @@
       </tr>
   </tbody>
 </table>
+
+<%= form_for @order, url: orders_path, method: :post do |order| %>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <p>支払方法</p>
+        <%= @order.payment_method_i18n %>
+      </td>
+      <td>
+        <p>お届け先</p>
+        <%= @order.address_display %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
+<%= link_to "注文を確定する", orders_complete_path, class: 'btn btn-success' %>
