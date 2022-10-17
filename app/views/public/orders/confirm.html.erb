@@ -54,7 +54,8 @@
           <%= @total %>
         </td>
         <td>
-          <%= @order.shipping_cost + @total %>
+          <%#= @order.shipping_cost + @total %>
+          <%= @order.total_payment %>
         </td>
       </tr>
   </tbody>
@@ -72,8 +73,16 @@
         <p>お届け先</p>
         <%= @order.address_display %>
       </td>
+        <%= order.hidden_field :payment_method, :value => @order.payment_method %>
+        <%= order.hidden_field :address, :value => @order.address %>
+        <%= order.hidden_field :postal_code, :value => @order.postal_code %>
+        <%= order.hidden_field :name, :value => @order.name %>
+        <%= order.hidden_field :shipping_cost, :value => @order.shipping_cost %>
+        <%= order.hidden_field :total_payment, :value => @order.total_payment %>
+      <td>
+        <%= order.submit :"注文を確定する", class: 'btn btn-success' %>
+      </td>
     </tr>
   </tbody>
 </table>
 <% end %>
-<%= link_to "注文を確定する", orders_complete_path, class: 'btn btn-success' %>
