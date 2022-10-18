@@ -4,6 +4,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @order = Order.all
   end
 
   def show
@@ -13,8 +14,15 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
+    @cart_items = current_customer.cart_items.all
     @cart_items.each do |cart_item|
-    OrderDetail.create!(order_id: 1, item_id: 1, amount: 1, price: 1)
+      @order_details = OrderDetail.new
+      @order_details.item_id = cart_item.item_id
+      @order_details.order_id = @order.id
+      @order_details.price = cart_item.item.price
+      @order_details.amount = cart_item.amount
+      @order_details.save
+      current_customer.cart_items.destroy_all
     end
     redirect_to orders_complete_path
   end
@@ -24,7 +32,6 @@ class Public::OrdersController < ApplicationController
     @total = 0
     @cart_items = CartItem.all
     @order.shipping_cost = 800
-    @order.total_payment = @order.shipping_cost + @total
     select_address = params[:order][:select_address]
     if select_address == "0"
       @order.postal_code = current_customer.postal_code

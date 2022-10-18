@@ -54,8 +54,8 @@
           <%= @total %>
         </td>
         <td>
-          <%#= @order.shipping_cost + @total %>
-          <%= @order.total_payment %>
+          <%= @order.shipping_cost + @total %>
+          <% @order.total_payment = @order.shipping_cost + @total %>
         </td>
       </tr>
   </tbody>

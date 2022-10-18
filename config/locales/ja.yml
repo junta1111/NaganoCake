@@ -4,3 +4,15 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
+
+      status:
+        wait_payment: "入金待ち"
+        payment_confirmation: "入金確認"
+        production: "制作中"
+        prepped: "発送準備中"
+        already: "発送済み"
+
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short:  "%Y/%m/%d"
