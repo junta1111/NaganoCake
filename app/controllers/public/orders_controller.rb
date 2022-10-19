@@ -5,9 +5,12 @@ class Public::OrdersController < ApplicationController
 
   def index
     @order = Order.all
+    @total = 0
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   def create
@@ -19,7 +22,7 @@ class Public::OrdersController < ApplicationController
       @order_details = OrderDetail.new
       @order_details.item_id = cart_item.item_id
       @order_details.order_id = @order.id
-      @order_details.price = cart_item.item.price
+      @order_details.price = cart_item.item.with_tax_price
       @order_details.amount = cart_item.amount
       @order_details.save
       current_customer.cart_items.destroy_all
