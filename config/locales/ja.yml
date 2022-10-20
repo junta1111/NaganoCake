@@ -12,6 +12,14 @@ ja:
         prepped: "発送準備中"
         already: "発送済み"
 
+    order_detail:
+      making_status:
+        not_production: "制作不可"
+        wait: "制作待ち"
+        production: "制作中"
+        conclusion: "制作完了"
+
+
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"

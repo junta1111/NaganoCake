@@ -34,6 +34,7 @@ namespace :admin do
   resources :items
   resources :customers
   resources :orders
+  resources :order_details,only:[:update]
 end
 
 get 'admin/' => 'admin/homes#top'
