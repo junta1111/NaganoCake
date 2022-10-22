@@ -4,11 +4,11 @@
   <%= @items.introduction %>
   ￥<%= @items.add_tax_sales_price.to_s(:dalimited) %>(税込)
 
-  <%= form_with model: @cart_item, url: cart_items_path do |f| %>
-
-  <%= f.hidden_field :item_id, :value => @items.id %>
-  <%= f.select :amount, *[1..10] %>
-  <%= f.submit 'カートに入れる', class: "btn btn-success" %>
-
+  <% if customer_signed_in? %>
+    <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+      <%= f.hidden_field :item_id, :value => @items.id %>
+      <%= f.select :amount, *[1..10] %>
+      <%= f.submit 'カートに入れる', class: "btn btn-success" %>
+    <% end %>
   <% end %>
 </tbody>
