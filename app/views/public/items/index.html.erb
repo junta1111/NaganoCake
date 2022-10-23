@@ -1,4 +1,5 @@
 <h2>商品一覧</h2>
+<%= @items.id.where('created_at > ?', Date.today).count %>
 
 <tbody>
   <% @items.each do |item| %>
@@ -15,5 +16,6 @@
       ￥<%= item.add_tax_sales_price.to_s(:dalimited) %>
     </td>
     <% end %>
+    <%= paginate @items %>
   </tr>
 </tbody>

@@ -7,7 +7,7 @@
   <% if customer_signed_in? %>
     <%= form_with model: @cart_item, url: cart_items_path do |f| %>
       <%= f.hidden_field :item_id, :value => @items.id %>
-      <%= f.select :amount, *[1..10] %>
+      <%= f.select :amount, *[1..10], {include_blank: '個数選択'}  %>
       <%= f.submit 'カートに入れる', class: "btn btn-success" %>
     <% end %>
   <% end %>

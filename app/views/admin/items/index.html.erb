@@ -1,9 +1,6 @@
 <table class="table table-striped">
 
 <h2>商品一覧</h2>
-
-<%= link_to "新規登録", new_admin_item_path %>
-
  <thead>
    <tr>
      <th>商品ID</th>
@@ -11,9 +8,10 @@
      <th>税抜価格</th>
      <th>ジャンル</th>
      <th>ステータス</th>
+     <%= link_to "新規登録", new_admin_item_path, class: 'btn btn-success' %>
    </tr>
  </thead>
- 
+
 <tbody>
   <% @items.each do |item| %>
   <tr>
@@ -36,10 +34,10 @@
       <%= "販売停止中" %>
       <% end %>
     </td>
-  </tr>
   <% end %>
+  <%= paginate @items %>
+  </tr>
 </tbody>
-<%= paginate @items %>
 
 </table>
 
