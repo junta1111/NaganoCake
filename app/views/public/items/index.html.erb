@@ -1,5 +1,7 @@
-<h2>商品一覧</h2>
-<%= @items.id.where('created_at > ?', Date.today).count %>
+<div class="title">
+  <h2>商品一覧</h2>
+  (全<%= Item.all.count %>件)
+</div>
 
 <tbody>
   <% @items.each do |item| %>
