@@ -1,4 +1,7 @@
-<h2>商品編集</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-4"><h2>商品編集</h2></div>
+</div>
 
 <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
 
