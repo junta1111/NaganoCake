@@ -1,6 +1,7 @@
 class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
+    @customer = @order.customer
   end
 
   def update
@@ -8,7 +9,7 @@ class Admin::OrdersController < ApplicationController
     @order.update(order_params)
     redirect_to admin_order_path
   end
-  
+
   private
 
   def order_params

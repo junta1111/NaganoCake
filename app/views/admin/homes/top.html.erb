@@ -1,4 +1,9 @@
-<h2>注文履歴一覧</h2>
+<div class="container">
+  <div class="row">
+  <div class="col-4"><h2>注文履歴一覧</h2></div>
+</div>
+
+<table class="table table-bordered">
  <thead>
    <tr>
      <th>購入日時</th>
@@ -29,3 +34,4 @@
     <%= paginate @orders %>
    </tr>
  </tbody>
+</table>
