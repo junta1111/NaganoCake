@@ -1,12 +1,21 @@
-<h2>会員情報編集</h2>
-
-<%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
-
-<div class="field">
-  <%= f.label :"名前" %>
-  <%= f.text_field :last_name %>
-  <%= f.text_field :first_name %>
+<div class="container">
+  <div class="row">
+  <div class="col-5"><h2>会員情報編集</h2></div>
+  </div>
 </div>
+
+<div class="container0">
+  <div class="row">
+    <div class="col-lg-7">
+      <%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
+      <table class="table-borderless">
+        <tbody>
+
+        <div class="field">
+          <th><%= f.label :"名前" %></th>
+          <td><%= f.text_field :last_name %></td>
+          <td><%= f.text_field :first_name %></td>
+        </div>
 
 <div class="field">
   <%= f.label :"フリガナ" %>
@@ -39,3 +48,7 @@
 <% end %>
 
 <%= link_to '退会する', customers_unsubscribe_path, class: "btn btn-danger" %>
+        </tbody>
+      </table>
+    </div>
+  </div>
