@@ -1,14 +1,34 @@
-<tbody>
-  <%= image_tag @items.get_image %>
-  <%= @items.name %>
-  <%= @items.introduction %>
-  ￥<%= @items.add_tax_sales_price.to_s(:dalimited) %>(税込)
-
-  <% if customer_signed_in? %>
-    <%= form_with model: @cart_item, url: cart_items_path do |f| %>
-      <%= f.hidden_field :item_id, :value => @items.id %>
-      <%= f.select :amount, *[1..10], {include_blank: '個数選択'}  %>
-      <%= f.submit 'カートに入れる', class: "btn btn-success" %>
-    <% end %>
-  <% end %>
-</tbody>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5">
+      <%= image_tag @items.get_image %>
+    </div>
+  
+  <div class="col-lg-6">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><strong><%= @items.name %></strong></td>
+        </tr>
+        <tr>
+          <td><%= @items.introduction %></td>
+        </tr>
+        <tr>
+          <td>￥<%= @items.add_tax_sales_price.to_s(:dalimited) %>(税込)</td>
+        </tr>
+        <tr>
+          <td>
+            <% if customer_signed_in? %>
+              <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+              <%= f.hidden_field :item_id, :value => @items.id %>
+              <%= f.select :amount, *[1..10], {include_blank: '個数選択'}  %>
+              <%= f.submit 'カートに入れる', class: "btn btn-success" %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>

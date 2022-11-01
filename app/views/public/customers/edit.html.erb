@@ -4,51 +4,64 @@
   </div>
 </div>
 
-<div class="container0">
+<div class="container">
   <div class="row">
-    <div class="col-lg-7">
+    <div class="col-lg-10">
       <%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
       <table class="table-borderless">
         <tbody>
+        <tr>
+          <div class="field">
+            <th><%= f.label :"名前" %></th>
+            <td><%= f.text_field :last_name %></td>
+            <td><%= f.text_field :first_name %></td>
+          </div>
+        </tr>
 
-        <div class="field">
-          <th><%= f.label :"名前" %></th>
-          <td><%= f.text_field :last_name %></td>
-          <td><%= f.text_field :first_name %></td>
-        </div>
+        <tr>
+          <div class="field">
+            <th><%= f.label :"フリガナ" %></th>
+            <td><%= f.text_field :last_name_kana %></td>
+            <td><%= f.text_field :first_name_kana %></td>
+          </div>
+        </tr>
 
-<div class="field">
-  <%= f.label :"フリガナ" %>
-  <%= f.text_field :last_name_kana %>
-  <%= f.text_field :first_name_kana %>
-</div>
+        <tr>
+          <div class="field">
+            <th><%= f.label :"郵便番号" %></th>
+            <td><%= f.text_field :postal_code %></td>
+          </div>
+        </tr>
 
-<div class="field">
-  <%= f.label :"郵便番号" %>
-  <%= f.text_field :postal_code %>
-</div>
+        <tr>
+          <div class="field">
+          <th><%= f.label :"住所" %></th>
+          <td><%= f.text_field :address %></td>
+          </div>
+        </tr>
 
-<div class="field">
-  <%= f.label :"住所" %>
-  <%= f.text_field :address %>
-</div>
+        <tr>
+          <div class="field">
+          <th><%= f.label :"電話番号" %></th>
+          <td><%= f.text_field :telephone_number %></td>
+          </div>
+        </tr>
 
-<div class="field">
-  <%= f.label :"電話番号" %>
-  <%= f.text_field :telephone_number %>
-</div>
+        <tr>
+          <div class="field">
+          <th><%= f.label :"メールアドレス" %></th>
+          <td><%= f.text_field :email %></td>
+          </div>
+        </tr>
 
-<div class="field">
-  <%= f.label :"メールアドレス" %>
-  <%= f.text_field :email %>
-</div>
+        <tr>
+          <td><%= f.submit '編集内容を保存', class: "btn btn-success" %></td>
+            <% end %>
+          <td><%= link_to '退会する', customers_unsubscribe_path, class: "btn btn-danger" %></td>
+        </tr>
 
-<%= f.submit '編集内容を保存', class: "btn btn-success" %>
-
-<% end %>
-
-<%= link_to '退会する', customers_unsubscribe_path, class: "btn btn-danger" %>
         </tbody>
       </table>
     </div>
   </div>
+</div>
