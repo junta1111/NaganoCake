@@ -7,7 +7,7 @@
         <%= render "public/shared/error_messages", resource: resource %>
           <div class="container">
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-10">
                 <table class="table-borderless">
                   <tbody>
                     <tr>
@@ -34,7 +34,7 @@
 
                     <tr>
                       <td><%= f.label :"住所" %></td>
-                      <td><%= f.text_field :address %></td>
+                      <td><%= f.text_field :address, :size=>"50" %></td>
                     </tr>
 
                     <tr>
@@ -47,13 +47,17 @@
                       <td>
                         <% if @minimum_password_length %>
                         <% end %>
+                        <%= f.password_field :password, autocomplete: "new-password" %>
                       </td>
-                      <td><%= f.password_field :password, autocomplete: "new-password" %></td>
                     </tr>
 
                     <tr>
-                      <td><%= f.label :"パスワード(確認用)" %><td>
-                      <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+                      <td>
+                        <%= f.label :"パスワード(確認用)" %>
+                      </td>
+                      <td>
+                        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                      </td>
                     </tr>
 
                     <tr>

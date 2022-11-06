@@ -1,88 +1,101 @@
-<h2>注文情報確認</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-4"><h2>注文情報確認</h2></div>
+  </div>
+</div>
 
-<thead>
-  <tr>
-    <th>商品名</th>
-    <th>単価(税込)</th>
-    <th>数量</th>
-    <th>小計</th>
-  </tr>
-</thead>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
 
-<table>
-  <tbody>
-    <tr>
-    <% @cart_items.each do |cart_item| %>
-      <td>
-        <%= image_tag cart_item.item.get_image %>
-      </td>
-      <td>
-        <%= cart_item.item.name %>
-      </td>
-      <td>
-        <%= cart_item.item.with_tax_price %>
-      </td>
-      <td>
-        <%= cart_item.amount %>
-      </td>
-      <td>
-        <%= cart_item.subtotal %>
-      </td>
-      <td>
-        <% @total +=  cart_item.subtotal %>
-      </td>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+        <tbody>
+          <tr>
+          <% @cart_items.each do |cart_item| %>
+            <td>
+              <%= image_tag cart_item.item.get_image, :size =>'50x50' %>
+              <%= cart_item.item.name %>
+            </td>
+            <td>
+              <%= cart_item.item.with_tax_price %>
+            </td>
+            <td>
+              <%= cart_item.amount %>
+            </td>
+            <td>
+              <%= cart_item.subtotal %>
+            </td>
+            <td>
+              <% @total +=  cart_item.subtotal %>
+            </td>
+            <% end %>
+          </tr>
+       </tbody>
+      </table>
+    </div>
 
-<thead>
-  <tr>
-    <th>送料</th>
-    <th>商品合計</th>
-    <th>請求金額</th>
-  </tr>
-</thead>
+   <div class="col-lg-3">
+     <table class="table table-bordered">
+       <tbody>
+         <tr>
+           <th>送料</th>
+           <td><%= @order.shipping_cost %></td>
+         </tr>
 
-<table>
-  <tbody>
-      <tr>
-        <td>
-          <%= @order.shipping_cost %>
-        </td>
-        <td>
-          <%= @total %>
-        </td>
-        <td>
-          <%= @order.shipping_cost + @total %>
-          <% @order.total_payment = @order.shipping_cost + @total %>
-        </td>
-      </tr>
-  </tbody>
-</table>
+         <tr>
+           <th>商品合計</th>
+           <td><%= @total %></td>
+         </tr>
 
-<%= form_for @order, url: orders_path, method: :post do |order| %>
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <p>支払方法</p>
-        <%= @order.payment_method_i18n %>
-      </td>
-      <td>
-        <p>お届け先</p>
-        <%= @order.address_display %>
-      </td>
+         <tr>
+           <th>請求金額</th>
+           <td>
+             <%= @order.shipping_cost + @total %>
+             <% @order.total_payment = @order.shipping_cost + @total %>
+           </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+ </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-7">
+      <table class="table table-borderless">
+        <%= form_for @order, url: orders_path, method: :post do |order| %>
+        <tbody>
+          <tr>
+            <th>支払方法</th>
+            <td><%= @order.payment_method_i18n %></td>
+          </tr>
+
+          <tr>
+            <th>お届け先</th>
+            <td><%= @order.address_display %></td>
+          </tr>
         <%= order.hidden_field :payment_method, :value => @order.payment_method %>
         <%= order.hidden_field :address, :value => @order.address %>
         <%= order.hidden_field :postal_code, :value => @order.postal_code %>
         <%= order.hidden_field :name, :value => @order.name %>
         <%= order.hidden_field :shipping_cost, :value => @order.shipping_cost %>
         <%= order.hidden_field :total_payment, :value => @order.total_payment %>
-      <td>
-        <%= order.submit :"注文を確定する", class: 'btn btn-success' %>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<% end %>
+       </tbody>
+
+       <tr>
+         <td><%= order.submit :"注文を確定する", class: 'btn btn-success' %></td>
+       </tr>
+       <% end %>
+      </table>
+    </div>
+  </div>
+</div>
