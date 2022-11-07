@@ -5,10 +5,10 @@
 
 <div class="container">
   <div class="row">
-  <div class="col-lg-4">
+  <div>
     <td><h4>会員の方はこちらからログイン</h4></td>
       <%= form_with model: @customer, url: customer_session_path do |f| %>
-        <div class="col-lg-10">
+        <div>
           <table class="table-borderless">
           <tr>
             <td><%= f.label :メールアドレス %></td><br>
@@ -30,9 +30,9 @@
 </div>
 </div>
 
-<div class="container">
+<div class="container"><br>
   <div class="row">
-  <div class="col-lg-4"><h4>会員登録がお済でない方</h4></div>
-    <%= link_to 'こちら', new_customer_registration_path %>から新規登録を行ってください。
+    <div class="col-4"><h4>会員登録がお済みでない方</h4></div>
+  </div>
+    <td><%= link_to 'こちら', new_customer_registration_path %>から新規登録を行ってください。</td>
 </div>
-
