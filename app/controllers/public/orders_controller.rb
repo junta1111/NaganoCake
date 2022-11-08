@@ -4,7 +4,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order = Order.all
+    @order = Order.page(params[:page])
     @total = 0
   end
 

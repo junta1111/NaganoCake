@@ -6,7 +6,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-9">
+    <div class="col-lg-9"><br>
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -18,8 +18,8 @@
         </thead>
 
         <tbody>
-          <tr>
           <% @cart_items.each do |cart_item| %>
+          <tr>
             <td>
               <%= image_tag cart_item.item.get_image, :size =>'50x50' %>
               <%= cart_item.item.name %>
@@ -32,8 +32,6 @@
             </td>
             <td>
               <%= cart_item.subtotal %>
-            </td>
-            <td>
               <% @total +=  cart_item.subtotal %>
             </td>
             <% end %>
@@ -42,7 +40,7 @@
       </table>
     </div>
 
-   <div class="col-lg-3">
+   <div class="col-lg-3"><br>
      <table class="table table-bordered">
        <tbody>
          <tr>

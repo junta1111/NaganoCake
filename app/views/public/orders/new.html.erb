@@ -7,7 +7,7 @@
 <%= form_with model: @order, url: orders_confirm_path do |f| %>
 <div class="container">
   <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-8"><br>
         <th><h4>支払方法</h4></th>
         <div>
           <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
@@ -23,7 +23,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-8"><br>
       <tbody>
      <h4>お届け先</h4>
          <div>
