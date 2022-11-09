@@ -7,10 +7,9 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8">
+      <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
       <table class="table-borderless">
         <tbody>
-          <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
-
           <tr>
             <td><label for="inputImage">商品画像</label></td>
             <td><%= f.file_field :image, placeholder: "商品画像", accept: "image/*" %><br></td><br>
