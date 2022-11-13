@@ -37,17 +37,13 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-  
-  def after_sign_in_path_for(resource)
-   items_path
+
+  def after_sign_up_path_for(resource)
+   customers_path
   end
-  #商品一覧ページに遷移
-  
-  def after_sign_out_path_for(resource)
-   root_path
-  end
+
   #トップページに遷移
-  
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number])
   end

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   # URL /customers/sign_in ...
+devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+}
 
 scope module: :public do
 resource :customers
@@ -11,10 +15,6 @@ resources :orders
 resources :addresses
 end
 
- devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
 root to: 'public/homes#top'
 get '/about' => 'public/homes#about'
 
