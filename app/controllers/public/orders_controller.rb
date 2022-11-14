@@ -4,7 +4,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order = Order.page(params[:page])
+    @order = Order.page(params[:page]).where(customer_id: current_customer.id)
     @total = 0
   end
 

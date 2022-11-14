@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
   # URL /customers/sign_in ...
-devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
+
 
 scope module: :public do
-resource :customers
+resource :customers, only: [:show, :edit, :update]
 resources :items
 delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 resources :cart_items
@@ -14,6 +11,12 @@ get 'orders/complete' => 'orders#complete'
 resources :orders
 resources :addresses
 end
+
+devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+}
+
 
 root to: 'public/homes#top'
 get '/about' => 'public/homes#about'
